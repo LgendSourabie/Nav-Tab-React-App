@@ -26,7 +26,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, []);
 
   const showSelectedCompany = (id) => {
@@ -39,17 +39,24 @@ const App = () => {
   }
 
   return (
-    <main>
-      <ul>
+    <main className="jobs-center">
+      <section className="btn-container">
         {data.map((d) => {
           const { id, company } = d;
           return (
-            <li key={id}>
-              <button onClick={() => showSelectedCompany(id)}>{company}</button>
-            </li>
+            <h4 key={id}>
+              <button
+                className={
+                  singleJob[0].id === id ? "job-btn active-btn" : "job-btn"
+                }
+                onClick={() => showSelectedCompany(id)}
+              >
+                {company}
+              </button>
+            </h4>
           );
         })}
-      </ul>
+      </section>
       <div>
         {singleJob.map((d) => (
           <ul key={d.id}>
